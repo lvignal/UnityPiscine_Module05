@@ -56,10 +56,11 @@ namespace Module05.Player
         public Action OnPlayerDeath;
         public Action OnEndReached;
         
-        private const string IS_HURT = "isHurt";
-        private const string IS_DEAD = "isDead";
+        private const string HURT = "Hurt";
+        private const string DEATH = "Death";
         private const string JUMP = "Jump";
         private const string TURN = "Turn";
+        private const string RESPAWN = "Respawn";
         private const string XVELOCITY = "xVelocity";
 
         private void Start()
@@ -159,21 +160,19 @@ namespace Module05.Player
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.gameObject.GetComponent<DetectionZone>())
-            {
                 other.gameObject.GetComponentInParent<EnemyController>().OnHitPlayer -= ReactToHit;
-                _animator.SetBool(IS_HURT, false);
-            }
         }
 
         private void ReactToHit()
         {
             HealthPoints--;
-            _animator.SetBool(IS_HURT, HealthPoints > 0);
+            if (_healthPoints > 0)
+                _animator.SetTrigger(HURT);
             _hurtSound.Play();
 
             if (HealthPoints <= 0)
             {
-                _animator.SetBool(IS_DEAD, true);
+                _animator.SetTrigger(DEATH);
                 _deathSound.Play();
                 _numberOfDeaths++;
                 OnPlayerDeath?.Invoke();
@@ -183,13 +182,16 @@ namespace Module05.Player
         
         public void Reset()
         {
-            _animator.SetBool(IS_DEAD, false);
+            _animator.ResetTrigger(DEATH);
+            _animator.ResetTrigger(HURT);
             transform.position = _startPosition.position;
             if (transform.localScale.x < 0)
                 FlipSprite();
             HealthPoints = 3;
             NumberOfCollectedLeaves = 0;
             _respawnSound.Play();
+            enabled = true;
+            _animator.SetTrigger(RESPAWN);
         }
 
         // called at the end of the "Turn" animation

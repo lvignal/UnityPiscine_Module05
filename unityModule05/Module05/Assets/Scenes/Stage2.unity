@@ -2855,7 +2855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1245087938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3431,26 +3431,6 @@ PrefabInstance:
       propertyPath: _startPosition
       value: 
       objectReference: {fileID: 156049059}
-    - target: {fileID: 4012308218230848494, guid: 9b9a6fff233d35e43a89dacdfb3d6657, type: 3}
-      propertyPath: _leafPointsText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4012308218230848494, guid: 9b9a6fff233d35e43a89dacdfb3d6657, type: 3}
-      propertyPath: _healthPointsText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4012308218230848494, guid: 9b9a6fff233d35e43a89dacdfb3d6657, type: 3}
-      propertyPath: _notEnoughLeafPointsText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442731506038974009, guid: 9b9a6fff233d35e43a89dacdfb3d6657, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 28d5cbee797207d43bd1201dbc30a5e4, type: 2}
-    - target: {fileID: 7346542656261020475, guid: 9b9a6fff233d35e43a89dacdfb3d6657, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8314909848717839168, guid: 9b9a6fff233d35e43a89dacdfb3d6657, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.01
