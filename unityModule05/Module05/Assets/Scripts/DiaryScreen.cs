@@ -27,7 +27,7 @@ namespace Module05.UI
             _levelsButtons[levelIndex - 1].interactable = true;
         }
         
-        public void UnlockOnlyFirstLevel()
+        private void UnlockOnlyFirstLevel()
         {
             _levelsButtons[0].interactable = true;
         }
