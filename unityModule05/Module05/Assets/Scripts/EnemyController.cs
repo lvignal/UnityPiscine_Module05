@@ -12,6 +12,8 @@ namespace Module05.Enemy
 
         public Action OnHitPlayer;
         
+        private const string IS_PLAYER_DETECTED = "isPlayerDetected";
+        
         protected void Start()
         {
             _animator = GetComponent<Animator>();
@@ -21,7 +23,7 @@ namespace Module05.Enemy
         
         private void AttackPlayer(bool isDetected)
         {
-            _animator.SetBool("isPlayerDetected", isDetected);
+            _animator.SetBool(IS_PLAYER_DETECTED, isDetected);
         }
         
         // called at a precise moment in the attack animation

@@ -72,6 +72,7 @@ namespace Module05.UI
         
         public void GoToMainMenu()
         {
+            _notEnoughLeafPointsText.gameObject.SetActive(false);
             LevelManager.LevelManager levelManager = FindObjectOfType<LevelManager.LevelManager>();
             levelManager.GoToMainMenu();
         }

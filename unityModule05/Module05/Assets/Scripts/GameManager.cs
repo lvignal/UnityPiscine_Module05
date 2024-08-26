@@ -26,7 +26,6 @@ namespace Module05
         public void ResumeGame()
         {
             LastLevelUnlocked = PlayerPrefs.GetInt("LastLevelUnlocked", 1);
-            Debug.Log("Resuming game at level " + LastLevelUnlocked);
             SceneManager.LoadScene("Stage" + LastLevelUnlocked);
             SceneManager.sceneLoaded += ReturnToSavedState;
         }

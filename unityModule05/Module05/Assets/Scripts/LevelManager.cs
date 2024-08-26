@@ -26,7 +26,6 @@ namespace Module05.LevelManager
         
         public void RestartLevel()
         {
-            Debug.Log("Restart game");
             _fadingScreen.OnFadeComplete += ResetLevel;
             _fadingScreen.Fade(true);
         }
@@ -74,7 +73,7 @@ namespace Module05.LevelManager
             int lastSavedNumberOfDeaths = PlayerPrefs.GetInt("NumberOfDeaths", 0);
             PlayerPrefs.SetInt("NumberOfDeaths", lastSavedNumberOfDeaths + playerInfos.NumberOfDeaths);
             
-            if (GameManager.Instance.LastLevelUnlocked < _levelId)
+            if (PlayerPrefs.GetInt("LastLevelUnlocked") < _levelId)
                 PlayerPrefs.SetInt("LastLevelUnlocked", _levelId);
             
             CollectibleManager collectibleManager = FindObjectOfType<CollectibleManager>();

@@ -42,7 +42,6 @@ namespace Module05.Player
             private set
             {
                 _numberOfCollectedLeaves = value;
-                Debug.Log("Updating leaf points, value = " + _numberOfCollectedLeaves * 5);
                 UIManager.Instance.UpdatePlayerLeafPoints(_numberOfCollectedLeaves * 5);
             }
         }
@@ -214,7 +213,6 @@ namespace Module05.Player
         
         public void SetInfos(int healthPoints, int numberOfCollectedLeaves)
         {
-            Debug.Log("Setting player infos, HP = " + healthPoints + ", LP = " + numberOfCollectedLeaves);
             HealthPoints = healthPoints;
             NumberOfCollectedLeaves = numberOfCollectedLeaves;
         }
