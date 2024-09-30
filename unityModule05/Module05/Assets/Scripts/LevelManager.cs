@@ -26,6 +26,11 @@ namespace Module05.LevelManager
         
         public void RestartLevel()
         {
+            // remove the leaf points collected
+            PlayerController.PlayerInfos playerInfos = GetPlayerInfos();
+            int lastSavedLeafPoints = PlayerPrefs.GetInt("LeafPoints", 0);
+            PlayerPrefs.SetInt("LeafPoints", lastSavedLeafPoints - playerInfos.LeafPoints);
+            
             _fadingScreen.OnFadeComplete += ResetLevel;
             _fadingScreen.Fade(true);
         }
@@ -65,7 +70,6 @@ namespace Module05.LevelManager
         
         private void SaveGame()
         {
-            Debug.Log("Saving game...");
             PlayerController.PlayerInfos playerInfos = GetPlayerInfos();
             PlayerPrefs.SetInt("HealthPoints", playerInfos.HealthPoints);
             int lastSavedLeafPoints = PlayerPrefs.GetInt("LeafPoints", 0);
