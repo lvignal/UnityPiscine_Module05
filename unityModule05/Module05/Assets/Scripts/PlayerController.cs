@@ -152,7 +152,7 @@ namespace Module05.Player
                 if (NumberOfCollectedLeaves >= 5)
                     OnEndReached?.Invoke();
                 else
-                    UIManager.Instance.DisplayNotEnoughLeafPointsText();
+                    UIManager.Instance.DisplayNotEnoughLeafPointsText(true);
             }
         }
 

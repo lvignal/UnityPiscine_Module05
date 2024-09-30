@@ -52,9 +52,15 @@ namespace Module05.UI
             _leafPointsText.text = leafPoints + " LP";
         }
         
-        public void DisplayNotEnoughLeafPointsText()
+        public void DisplayNotEnoughLeafPointsText(bool display)
         {
-            StartCoroutine(DisplayNotEnoughLeafPoints());
+            if (display)
+                StartCoroutine(DisplayNotEnoughLeafPoints());
+            else
+            {
+                StopAllCoroutines();
+                _notEnoughLeafPointsText.gameObject.SetActive(false);
+            }
         }
         
         private IEnumerator DisplayNotEnoughLeafPoints()
@@ -66,13 +72,14 @@ namespace Module05.UI
         
         public void RestartLevel()
         {
+            DisplayNotEnoughLeafPointsText(false);
             LevelManager.LevelManager levelManager = FindObjectOfType<LevelManager.LevelManager>();
             levelManager.RestartLevel();
         }
         
         public void GoToMainMenu()
         {
-            _notEnoughLeafPointsText.gameObject.SetActive(false);
+            DisplayNotEnoughLeafPointsText(false);
             LevelManager.LevelManager levelManager = FindObjectOfType<LevelManager.LevelManager>();
             levelManager.GoToMainMenu();
         }
