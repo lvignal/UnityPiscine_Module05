@@ -74,7 +74,7 @@ namespace Module05.Player
             float horizontalInput = Input.GetAxis("Horizontal");
             // avoid to go out of the screen on the left
             if (transform.position.x >= _minXPosition)
-                _rigidBody.velocity = new Vector2(horizontalInput * _speed, _rigidBody.velocity.y);
+                _rigidBody.linearVelocity = new Vector2(horizontalInput * _speed, _rigidBody.linearVelocity.y);
             else
                 transform.position = new Vector3(_minXPosition, transform.position.y, transform.position.z);
             
@@ -89,23 +89,23 @@ namespace Module05.Player
             // jump
             if (Input.GetKeyDown(KeyCode.Space) && _isOnGround && !_isTouchingWall)
             {
-                _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, _jumpForce);
+                _rigidBody.linearVelocity = new Vector2(_rigidBody.linearVelocity.x, _jumpForce);
                 _jumpSound.Play();
                 _animator.SetTrigger(JUMP);
                 _isOnGround = false;
             }
             
             // if not moving, it is "idle" animation, else it is "walk"
-            _animator.SetFloat(XVELOCITY, Mathf.Abs(_rigidBody.velocity.x));
+            _animator.SetFloat(XVELOCITY, Mathf.Abs(_rigidBody.linearVelocity.x));
             
             // play "idle" animation when touching a wall to avoid passing through it
             if (_isTouchingWall)
                 _animator.SetFloat(XVELOCITY, 0);
             
             
-            if (Mathf.Abs(_rigidBody.velocity.x) > 0 && _isOnGround && !_isTouchingWall && !_walkSound.isPlaying)
+            if (Mathf.Abs(_rigidBody.linearVelocity.x) > 0 && _isOnGround && !_isTouchingWall && !_walkSound.isPlaying)
                 _walkSound.Play();
-            else if (Mathf.Abs(_rigidBody.velocity.x) == 0 || _isTouchingWall)
+            else if (Mathf.Abs(_rigidBody.linearVelocity.x) == 0 || _isTouchingWall)
                 _walkSound.Stop();
         }
 
